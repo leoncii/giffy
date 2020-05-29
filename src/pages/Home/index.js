@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import ListOfGifs from '../../components/ListOfGifs'
-import useGifs from '../../hooks/useGifs'
+import ListOfGifs from 'components/ListOfGifs'
+import useGifs from 'hooks/useGifs'
 import { useLocation } from 'wouter'
-
-const POPULARES = ["code", "girl", "cafe", "sexy", "pizza"]
+import TrendingSearching from 'components/Trending'
 
 const Home = () => {
 
   const [keyword, setKeyword] = useState('')
   const [, pushLocation] = useLocation()
 
-  const {  gifs } = useGifs()
+  const { gifs } = useGifs()
   // console.log("[LOCATION]", location)
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -38,18 +37,14 @@ const Home = () => {
         />
         <button>search</button>
       </form>
-      <h3>Ultima busqueda</h3>
+      <h3>Trendings-- Last search</h3>
       {
         gifs === undefined
           ? 'cargando'
           : <ListOfGifs gifs={gifs} />
       }
       {
-        POPULARES.map(item => <li key={item}>
-          <a href={`/search/${item}`}>
-            Gif {item}
-          </a>
-        </li>)
+        <TrendingSearching />
       }
     </ul>
   </>

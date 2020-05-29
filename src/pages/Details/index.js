@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 // import Context from '../../context'
-import GifsContext from '../../context/gifsContext'
-import Gif from '../../components/Gif'
+import GifsContext from 'context/gifsContext'
+import Gif from 'components/Gif'
 
 const Details = ({ params }) => {
   const { gifs } = useContext(GifsContext)
