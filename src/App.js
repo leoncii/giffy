@@ -17,7 +17,7 @@ function App() {
       <div className="app">
         <section className="app__wrapper">
           <h2>Giffy</h2>
-          <button type='button'><Link href="/">Ir home</Link></button>
+          <button type='button'><Link href="/">Home</Link></button>
           {/* <SearchGifs gifs={gifs} /> */}
           <GifsContextProvider>
             <Route

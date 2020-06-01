@@ -1,8 +1,6 @@
 
 const API_KEY = 'jiljXIrLPT3TcmYiJIIMXZSnkKl6IHst'
 
-
-
 export default function getTrendings() {
 
   const API_URL = `https://api.giphy.com/v1/trending/searches?api_key=${API_KEY}`

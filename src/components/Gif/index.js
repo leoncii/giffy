@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Link } from 'wouter'
-const Gif = ({ id, title, url}) => {
+const Gif = ({ id, title, url }) => {
   return (
     <Link href={`/search/${id}`}>
       <h3>{title}</h3>
@@ -10,4 +10,4 @@ const Gif = ({ id, title, url}) => {
   )
 }
 
-export default Gif
+export default React.memo(Gif)

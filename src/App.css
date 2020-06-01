@@ -2,7 +2,14 @@
 .app {
   text-align: center;
 }
-
+/* h2 {
+  color: black;
+} */
+button > a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5em;
+}
 .app__wrapper {
   background-color: #282c34;
   min-height: 100vh;

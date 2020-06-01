@@ -1,43 +1,29 @@
-import React, { useState } from 'react'
+import React, { useCallback } from 'react'
 import ListOfGifs from 'components/ListOfGifs'
 import useGifs from 'hooks/useGifs'
 import { useLocation } from 'wouter'
 import TrendingSearching from 'components/Trending'
+import './styles.css'
+import SearchForm from 'components/SearchForm'
 
 const Home = () => {
 
-  const [keyword, setKeyword] = useState('')
   const [, pushLocation] = useLocation()
 
   const { gifs } = useGifs()
   // console.log("[LOCATION]", location)
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = useCallback(({ keyword }) => {
+    // e.preventDefault()
     // console.log(keyword)
     pushLocation(`/search/${keyword}`)
-  }
+  }, [pushLocation])
 
-  const handleChange = (e) => {
-    setKeyword(e.target.value)
-  }
+
   return <>
     <h1>Home</h1>
     <ul>
-      <form
-        onSubmit={handleSubmit}
-      >
-        <input
-          autoFocus
-          placeholder='Search gif...'
-          type="text"
-          onChange={handleChange}
-          value={keyword}
-          name=""
-          id=""
-        />
-        <button>search</button>
-      </form>
-      <h3>Trendings-- Last search</h3>
+      <SearchForm onSubmit={handleSubmit} />
+      <h3>Trendings <span role='img' aria-label='dedos'>🤞</span></h3>
       {
         gifs === undefined
           ? 'cargando'

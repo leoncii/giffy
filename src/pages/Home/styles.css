@@ -1,0 +1,10 @@
+input {
+  color: black;
+  padding: .5em;
+  border-radius: 5px;
+}
+button {
+  color: black;
+  padding: .5em;
+  border-radius: 5px;
+}
