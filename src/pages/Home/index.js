@@ -7,15 +7,14 @@ import './styles.css'
 import SearchForm from 'components/SearchForm'
 
 const Home = () => {
-
   const [, pushLocation] = useLocation()
 
   const { gifs } = useGifs()
   // console.log("[LOCATION]", location)
-  const handleSubmit = useCallback(({ keyword }) => {
+  const handleSubmit = useCallback(({ keyword, rating }) => {
     // e.preventDefault()
-    // console.log(keyword)
-    pushLocation(`/search/${keyword}`)
+    // console.log("][][][", keyword)
+    pushLocation(`/search/${keyword}/${rating}`)
   }, [pushLocation])
 
 

@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Select, Option } from './styles'
+import { useForm } from '../../hooks/useForm'
+
+const RATING = ['g', 'pg', 'pg-13', 'r']
 
 
-function SearchForm({ onSubmit }) {
-  const [keyword, setKeyword] = useState('')
+function SearchForm({ onSubmit, initialRating = '', initialkeyword = '' }) {
+  // const [keyword, setKeyword] = useState('')
+  // const [keyword, setKeyword] = useState('')
+  // const [rating, setRating] = useState(initialkeyword)
+  const { keyword, rating, updateKeyword, updateRating } = useForm({ initialRating, initialkeyword })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(keyword)
-    onSubmit({ keyword })
+    onSubmit({ keyword, rating })
   }
 
+
   const handleChange = (e) => {
-    setKeyword(e.target.value)
+    updateKeyword(e.target.value)
+    /*     updateKeyword({ type: ACTIONS.UPDATE_KEYWORD, payload: e.target.value }) */
+  }
+
+  const handleChangeRating = e => {
+    // console.log(e.target.value)
+    updateRating(e.target.value)
+    /*     updateRating({ type: ACTIONS.UPDATE_RATING, payload: e.target.value }) */
   }
 
   return <form
@@ -23,10 +37,17 @@ function SearchForm({ onSubmit }) {
       type="text"
       onChange={handleChange}
       value={keyword}
-      name=""
-      id=""
     />
     <button>Search</button>
+    <Select active onChange={handleChangeRating} value={rating}>
+      {
+        RATING.map(item => (
+          <Option key={item}>
+            {item}
+          </Option>
+        ))
+      }
+    </Select>
   </form>
 }
 

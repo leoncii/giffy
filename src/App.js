@@ -4,18 +4,21 @@ import Home from './pages/Home'
 import { Route, Link } from 'wouter'
 import SearchGifs from './pages/SearchGifs'
 import Details from './pages/Details'
-import Context from './context'
+import Login from './pages/Login'
+
+// import Context from './context'
+
+import { UserContextProvider } from './context/UserContext'
 import { GifsContextProvider } from './context/gifsContext'
+import { Header } from './components/Header'
 
 function App() {
 
   return (
-    <Context.Provider value={{
-      name: 'leoncii',
-      tieneHambre: true
-    }}>
+    <UserContextProvider>
       <div className="app">
         <section className="app__wrapper">
+          <Header />
           <h2>Giffy</h2>
           <button type='button'><Link href="/">Home</Link></button>
           {/* <SearchGifs gifs={gifs} /> */}
@@ -26,17 +29,21 @@ function App() {
             />
             <Route
               component={SearchGifs}
-              path='/search/:keyword'
+              path='/search/:keyword/:rating?'
             />
             <Route
               component={Details}
               path='/search/:id'
             />
+            <Route
+              component={Login}
+              path='/login'
+            />
           </GifsContextProvider>
         </section>
       </div>
-    </Context.Provider>
-  );
+    </UserContextProvider>
+  )
 }
 
 export default App;

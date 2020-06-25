@@ -5,8 +5,8 @@ import { useNearScreen } from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
 
 const SearchGifs = ({ params }) => {
-  const { keyword } = params
-  const { loading, gifs, setPage } = useGifs({ keyword })
+  const { keyword, rating = 'pg-13' } = params
+  const { loading, gifs, setPage } = useGifs({ keyword, rating })
   // console.log('----')7
   const externalRef = useRef()
   const { isNearScreen } = useNearScreen({
@@ -21,7 +21,7 @@ const SearchGifs = ({ params }) => {
   ), [setPage])
 
   useEffect(() => {
-    console.log(isNearScreen)
+    // console.log(isNearScreen)
     if (isNearScreen) debouncedHandleNextPage()
   }, [isNearScreen, debouncedHandleNextPage])
 

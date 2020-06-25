@@ -3,8 +3,10 @@ import getGifs from '../services/getGifs'
 import GifsContext from '../context/gifsContext'
 
 const INITIAL_PAGE = 0
-const useGifs = ({ keyword } = { keyword: 'bolivia' }) => {
+
+const useGifs = ({ keyword, rating } = { keyword: 'bolivia', rating: 'r' }) => {
   // console.log("][", props)
+  // console.log('[][][]', keyword)
   const { gifs, setGifs } = useContext(GifsContext)
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(INITIAL_PAGE)
@@ -15,26 +17,25 @@ const useGifs = ({ keyword } = { keyword: 'bolivia' }) => {
 
   useEffect(() => {
     setLoading(true)
-    getGifs({ keyword: lastKeyword })
+    getGifs({ keyword: lastKeyword, rating })
       .then(gifs => {
         setGifs(gifs)
         setLoading(false)
         localStorage.setItem('lastKeyword', keyword)
       })
-  }, [keyword, lastKeyword, setGifs])
+  }, [keyword, lastKeyword, setGifs, rating])
 
   useEffect(() => {
-    if (page === INITIAL_PAGE) return
-
+    if (page === INITIAL_PAGE) return;
     setLoadingNextPage(true)
 
-    getGifs({ keyword: lastKeyword, page })
+    getGifs({ keyword: lastKeyword, page, rating })
       .then(nextGifs => {
         setGifs(prevGifs => prevGifs.concat(nextGifs))
         setLoadingNextPage(false)
       })
 
-  }, [page, lastKeyword, setGifs])
+  }, [page, lastKeyword, setGifs, rating])
 
   return { loading, loadingNextPage, gifs, setPage }
 }
