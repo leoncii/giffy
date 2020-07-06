@@ -1,6 +1,6 @@
 import { Application, Router } from 'https://deno.land/x/oak@v5.0.0/mod.ts'
 import { oakCors } from 'https://deno.land/x/cors/mod.ts'
-import { createUser, postLogin, getFavs, getAll, postFav,deleteFav } from './routes.ts'
+import { createUser, postLogin, getFavs, getAll, postFav, deleteFav } from './routes.ts'
 import { userMiddleware } from './userMiddleware.ts'
 import { authMiddleware } from './authMiddleware.ts'
 
@@ -8,6 +8,8 @@ const app = new Application()
 const router = new Router()
 
 app.use(userMiddleware, oakCors())
+app.use(oakCors())
+
 
 router
   .get('/', getAll)
@@ -16,6 +18,7 @@ router
   .post('/favs/:id', authMiddleware, deleteFav)
   .post('/login', postLogin)
   .post('/register', createUser)
+
 
 app.addEventListener('error', (e) => {
   console.log(e.error)

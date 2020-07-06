@@ -8,7 +8,7 @@ export const userMiddleware = async (ctx: Context, next: Function) => {
   let { jwt } = value
 
   if (!jwt) {
-    jwt = ctx.request.headers.get('authorization')
+    jwt = ctx.request.headers.get('Authorization')
     // jwt = ctx.cookies.get('jwt')
   }
   console.log('[usermiddleware]', jwt)

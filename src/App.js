@@ -5,6 +5,7 @@ import { Route, Link } from 'wouter'
 import SearchGifs from './pages/SearchGifs'
 import Details from './pages/Details'
 import Login from './pages/Login'
+import Register from './pages/Register'
 
 // import Context from './context'
 
@@ -38,6 +39,10 @@ function App() {
             <Route
               component={Login}
               path='/login'
+            />
+            <Route
+              component={Register}
+              path='/register'
             />
           </GifsContextProvider>
         </section>

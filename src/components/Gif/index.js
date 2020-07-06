@@ -13,8 +13,9 @@ const Gif = ({ id, title, url }) => {
       </div>
       <Link className='gif-link' href={`/search/${id}`}>
         <h3>{title}</h3>
-        <img loading='lazy' src={url} alt="giffy" />
+        <img  src={url} alt="giffy" />
       </Link>
+      {/* <img src={url} alt="logo"/> */}
     </div>
   )
 }

@@ -7,6 +7,7 @@ export const HeaderStyled = styled.header`
     color: #fff;
     font-size: 1em;
     font-weight: 600;
+    margin: 1em 20px;
     text-decoration: none;
     /* margin: 1.5em auto; */
   }
