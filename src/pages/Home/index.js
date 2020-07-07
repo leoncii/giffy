@@ -19,7 +19,6 @@ const Home = () => {
 
 
   return <>
-    <h1>Home</h1>
     <ul>
       <SearchForm onSubmit={handleSubmit} />
       <h3>Trendings <span role='img' aria-label='dedos'>🤞</span></h3>

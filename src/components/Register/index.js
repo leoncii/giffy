@@ -1,13 +1,13 @@
 import React from 'react'
 import register from 'services/register'
 import { Formik } from 'formik'
-import { Button, Span } from './styles.js'
+import { Button, Span, Form } from './styles.js'
 import { useState } from 'react'
 
 export default function Register() {
   const [registered, setRegistered] = useState(false)
 
-  if(registered) {
+  if (registered) {
     return <h4>Congratulations! You've been successfully registered!</h4>
   }
 
@@ -39,17 +39,23 @@ export default function Register() {
       }}
     >
       {
-        ({ errors, handleChange, handleSubmit, isSubmitting }) => <form onSubmit={handleSubmit}>
-          <input name='username' onChange={handleChange} type="text" />
+        ({ errors, handleChange, handleSubmit, isSubmitting }) => <Form onSubmit={handleSubmit}>
+          <label>
+            Username:
+            <input name='username' onChange={handleChange} type="text" />
+          </label>
           <Span >
             {errors.username ? <p>{errors.username}</p> : ''}
           </Span>
+          <label>
+            Password:
           <input name='password' onChange={handleChange} type="text" />
+          </label>
           <Span >
             {errors.password ? <p>{errors.password}</p> : ''}
           </Span>
           <Button disabled={isSubmitting}>Registrarse</Button>
-        </form>
+        </Form>
       }
     </Formik>
   </>

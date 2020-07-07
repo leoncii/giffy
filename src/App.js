@@ -20,8 +20,9 @@ function App() {
       <div className="app">
         <section className="app__wrapper">
           <Header />
-          <h2>Giffy</h2>
-          <button type='button'><Link href="/">Home</Link></button>
+          <Link href="/" >
+            <h2 style={{ cursor: "pointer" }}>Giffy</h2>
+          </Link>
           {/* <SearchGifs gifs={gifs} /> */}
           <GifsContextProvider>
             <Route

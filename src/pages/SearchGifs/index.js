@@ -21,7 +21,6 @@ const SearchGifs = ({ params }) => {
   ), [setPage])
 
   useEffect(() => {
-    // console.log(isNearScreen)
     if (isNearScreen) debouncedHandleNextPage()
   }, [isNearScreen, debouncedHandleNextPage])
 
@@ -37,7 +36,6 @@ const SearchGifs = ({ params }) => {
 
     }
 
-    {/* <button onClick={handleNextPage}>Next Page</button> */}
   </>
 }
 //solo mira params
